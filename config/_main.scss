@@ -1,0 +1,325 @@
+@import "../components/flex", "../components/fonts", "../components/border";
+
+/**
+ * Main UI mixins for responsive design
+ * - desktop-to-tablet-ui: Styles for desktop and tablet screens
+ * - tablet-ui: Placeholder for tablet-specific styles
+ * - mobile-ui: Placeholder for mobile-specific styles
+ */
+
+/* =========================
+   Desktop & Tablet UI Styles
+   ========================= */
+@mixin ui {
+  .main-container {
+    margin: 2rem 1rem 2rem 1rem;
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    @include border_md;
+
+    /* --- Navigation Section --- */
+    .desktop-nav-container {
+      @include center_between;
+      padding-bottom: 0.5rem;
+
+      .logo {
+        @include inter_fonts;
+        font-family: "Inter Black";
+        font-size: 1.1rem;
+      }
+
+      .desktop-nav {
+        @include flex_center;
+
+        a {
+          text-decoration: none;
+        }
+
+        .option {
+          @include flex_center;
+          gap: 0.325rem;
+          background-color: #000;
+          color: #fff;
+          @include poppins_fonts;
+          padding: 0.4rem 0.5rem;
+          border-radius: 0.3rem;
+          margin-left: 0.3rem;
+          border: 0.125rem solid #000;
+          font-family: "Poppins Bold";
+          font-size: 0.8rem;
+
+          &:hover {
+            color: #000;
+            background-color: #fff;
+            border: 0.125rem solid #000;
+            cursor: pointer;
+          }
+
+          &:active {
+            transform: scale(0.97);
+            background-color: #fff;
+            border: 0.125rem solid #000;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    /* --- Timer Section --- */
+    .timer-container {
+      display: grid;
+      gap: 1rem;
+      margin-top: 3rem;
+
+      .timer-start {
+        @include border_md;
+
+        .timer-header-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .timer-title,
+        .timer-header-container {
+          @include inter_fonts;
+          font-family: "Inter Bold";
+          font-weight: bold;
+          font-size: 0.9rem;
+          color: #000;
+        }
+
+        .timer {
+          display: grid;
+          align-items: center;
+          justify-content: center;
+          margin: 3rem 0 0.5rem 0;
+
+          .time {
+            @include flex_center;
+            margin-bottom: 1rem;
+
+            .minute,
+            span,
+            .second {
+              font-size: 2.5rem;
+              @include poppins_fonts;
+              font-family: "Poppins Light";
+              font-weight: bold;
+            }
+          }
+        }
+
+        .button-container {
+          display: grid;
+          gap: 0.8rem;
+          grid-template-columns: repeat(2, auto);
+
+          button {
+            border: 0.125rem solid #000;
+            background-color: #000;
+            color: #fff;
+            @include poppins_fonts;
+            font-family: "Poppins Bold";
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: 0.2s;
+
+            &:hover {
+              background-color: #fff;
+              border: 0.125rem solid #000;
+              color: #000;
+              cursor: pointer;
+            }
+
+            &:active {
+              transform: scale(0.95);
+            }
+          }
+        }
+      }
+
+      .timer-break {
+        @include border_md;
+
+        .timer-title {
+          @include inter_fonts;
+          font-family: "Inter Bold";
+          font-weight: bold;
+          font-size: 0.95rem;
+          color: #000;
+        }
+
+        .time {
+          @include flex_center;
+          margin-bottom: 1rem;
+          margin-top: 2rem;
+
+          .minute,
+          span,
+          .second {
+            font-size: 2.5rem;
+            @include poppins_fonts;
+            font-family: "Poppins Light";
+            font-weight: bold;
+          }
+        }
+      }
+
+      .button-container {
+        @include flex_center;
+        gap: 0.8rem;
+
+        button {
+          border: 0.125rem solid #000;
+          background-color: #000;
+          color: #fff;
+          @include poppins_fonts;
+          font-family: "Poppins Bold";
+          padding: 0.5rem 1.5rem;
+          border-radius: 0.5rem;
+          margin: 0 0 1.5rem 0;
+          transition: 0.1s;
+
+          &:hover {
+            background-color: #fff;
+            border: 0.125rem solid #000;
+            color: #000;
+            cursor: pointer;
+          }
+
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      }
+    }
+  }
+
+  .todo-container {
+    margin: 2rem 0 0 0;
+    width: 100%;
+
+    header {
+      @include center_between;
+
+      .title {
+        @include inter_fonts;
+        font: {
+          size: 1.2rem;
+          weight: bold;
+          family: "Inter Medium";
+        }
+      }
+
+      button {
+        @include poppins_fonts;
+        font: {
+          family: "Poppins Bold";
+          size: 1rem;
+        }
+        transition: 0.1s;
+        border: 0.125rem solid black;
+        background-color: black;
+        color: white;
+        padding: 0.3rem 0.9rem;
+        border-radius: 0.4rem;
+
+        &:hover {
+          background-color: white;
+          border: 0.125rem solid black;
+          color: black;
+          cursor: pointer;
+        }
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+
+      border-bottom: 0.2rem solid black;
+      padding: 0 0 1rem 0;
+    }
+
+    .add-task-container {
+      display: none;
+      margin: 2rem 0 0 0;
+      gap: 2rem;
+
+      .task-name {
+        @include inter_fonts;
+        font-family: "Inter Bold";
+        padding: 0.5rem;
+        border-radius: 0.3rem;
+        width: 100%;
+        outline: none;
+        background-color: white;
+        border: 0.125rem solid rgb(216, 216, 216);
+        transition: 0.1s;
+
+        &:focus {
+          border: 0.125rem solid black;
+        }
+      }
+
+      button {
+        border: 0.125rem solid black;
+        background-color: black;
+        color: white;
+        padding: 0.4rem 1.5rem;
+        border-radius: 0.3rem;
+        @include poppins_fonts;
+        font-family: "Poppins Bold";
+        transition: 0.1s;
+
+        &:hover {
+          background-color: white;
+          color: black;
+          border: 0.125rem solid black;
+          cursor: pointer;
+        }
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+    }
+
+    .display-task {
+      margin: 1rem 0 0 0;
+      width: 100%;
+
+      @include poppins_fonts;
+      @include inter_fonts;
+      font-family: "Inter Bold";
+      font-size: 1.2rem;
+
+      td {
+        padding: 1rem 0 0 0;
+        width: 100%;
+      }
+
+      button {
+        color: white;
+        border: 0.125rem solid black;
+        background-color: black;
+        padding: 0.4rem 0.9rem;
+        border-radius: 0.5rem;
+        @include poppins_fonts;
+        font-family: "Poppins Bold";
+        font-size: 0.8rem;
+
+        &:hover {
+          background-color: white;
+          color: black;
+          border: 0.125rem solid black;
+          cursor: pointer;
+        }
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+    }
+  }
+}
