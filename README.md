@@ -9,11 +9,12 @@ untuk membantu pengguna mengelola waktu belajar/kerja secara efisien. Dibangun d
 - CSS3 + Sass/SCSS (Styling modular)
 - JavaScript ES6+ (Logika timer & interaksi)
 
-## 💡 Fitur
+## 💡 Fitur Utama
 - Timer Pomodoro dengan sesi Fokus dan Istirahat
 - Notifikasi suara saat sesi berakhir
 - Daftar tugas (Todo List) terintegrasi
 - Responsif (Desktop & Mobile)
+- Sound effect interaktif dan animasi intens
 
 ## 💾 Tentang Penyimpanan Data
 - Data ToDo disimpan di `localStorage` browser dalam format JSON.
@@ -21,7 +22,7 @@ untuk membantu pengguna mengelola waktu belajar/kerja secara efisien. Dibangun d
 ## 🎯 Tujuan Projek
 - Menerapkan teknik Pomodoro yang terbukti meningkatkan produktivitas (studi Francesco Cirillo, 1980-an).
 - Belajar pengembangan web modern dengan Sass dan JavaScript.
-- Membuat tool open-source yang bermanfaat untuk pelajar/pekerja.
+- Membuat tool open-source yang dapat digunakan sesuka hati dan bermanfaat untuk pelajar/pekerja.
 
 ## 🚀 Cara Menjalankan
 1. Clone repositori: `git clone https://github.com/DilFrontendDev/PomoLearn.git`
@@ -30,25 +31,10 @@ untuk membantu pengguna mengelola waktu belajar/kerja secara efisien. Dibangun d
 4. Jalankan file `index.html`
 5. Buka dibrowser
 
-## 📂 Struktur Projek
-PomoLearn/  
-├── index.html          # Halaman utama  
-├── scss/                # Hasil compile Sass  
-    ├── style.css
-    ├── style.scss
-    └── style.css.map
-├── components/               # Source Sass  
-    ├── _border.scss     # Variabel border   
-    ├── _fonts.scss      # Variabel fonts style
-    ├── _grid.scss       # File grid system 
-    └── _flex.scss.scss  # File flexbox
-   
-├── script.js            # Logika Pomodoro dan Aksi
-
-├── config/             # Folder tempat penyimpanan styling tampilan website  
-    └── _main.scss  
-
-├── assets/       # Folder penyimpanan semua asset website
+## 💡 Inspirasi & Referensi
+- Teknik Pomodoro Asli
+- Sass Documentation
+- MDN Web Docs: JavaScript Timers
 
 ## ✨ Happy Coding & Stay Productive!
 Dibuat dengan ❤️ oleh Dil.
