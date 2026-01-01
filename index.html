@@ -4,6 +4,254 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PomoLearn</title>
+
+    <meta
+      name="description"
+      content="Aplikasi Pomodoro Timer online gratis untuk manajemen waktu terbaik. Atur waktu fokus belajar dan istirahat dengan mudah. Ringan, tanpa install, dan responsif."
+    />
+
+    <meta
+      name="keywords"
+      content="pomodoro timer, timer belajar, online focus timer, tomato timer, aplikasi produktivitas, teknik pomodoro, time management tool, stopwatch online"
+    />
+
+    <meta name="author" content="Muhammad Badil Arrohman" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://pomolearn.netlify.app/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pomolearn.netlify.app/" />
+    <meta property="og:title" content="PomoLearn - Boost Your Focus" />
+    <meta
+      property="og:description"
+      content="Tingkatkan produktivitasmu dengan teknik Podomoro. Timer simpel, elegan, dan gratis."
+    />
+    <meta property="og:image" content="assets/thumbnail-pomodoro.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pomodoro Timer Online" />
+    <meta
+      name="twitter:description"
+      content="Aplikasi timer fokus untuk belajar dan bekerja. Coba sekarang!"
+    />
+
+    <meta name="theme-color" content="#d4af37" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style/style.css" media="all" />
+
+    <script src="script.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Badil Pomodoro Timer",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "IDR"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Muhammad Badil Arrohman"
+        }
+      }
+    </script>
   </head>
-  <body></body>
+  <body>
+    <!-- background animation -->
+    <div class="bg-animation">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <!-- navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <i class="bx bxs-timer"></i>
+          </div>
+          <span>PomoLearn</span>
+        </a>
+
+        <a
+          href="https://github.com/NetEnginee/PomoLearn"
+          target="_blank"
+          class="github-btn"
+        >
+          <i class="bx bxl-github"></i>
+          <span>Get on GitHub</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- main -->
+    <main class="main-content">
+      <div class="timer-container">
+        <div class="timer-modes">
+          <button class="mode-btn active" id="focus-btn">Focus</button>
+          <button class="mode-btn" id="short-break-btn">Short Break</button>
+          <button class="mode-btn" id="long-break-btn">Long Break</button>
+        </div>
+
+        <div class="timer-display">25:00</div>
+
+        <div class="timer-controls">
+          <button class="main-btn" id="start-btn">START</button>
+
+          <button class="icon-btn" id="reset-btn" title="Reset Timer">
+            <i class="bx bx-reset"></i>
+          </button>
+          <button class="icon-btn" id="settings-btn" title="Settings">
+            <i class="bx bx-cog"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="task-input-wrapper">
+        <input
+          type="text"
+          placeholder="What are you focusing on?"
+          class="task-input"
+        />
+      </div>
+    </main>
+
+    <!-- overlay pop up -->
+    <div class="modal-overlay" id="reset-confirm-modal">
+      <div class="modal-content">
+        <div class="modal-icon">
+          <i class="bx bx-refresh"></i>
+        </div>
+        <h3>Reset Timer?</h3>
+        <p>Waktu yang berjalan saat ini akan diulang kembali ke awal.</p>
+        <div class="modal-actions">
+          <button id="btn-cancel-reset" class="btn-modal btn-secondary">
+            Batal
+          </button>
+          <button id="btn-confirm-reset" class="btn-modal btn-primary">
+            Ya, Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="settings-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Timer Settings</h3>
+          <button class="close-modal-btn" id="close-settings">&times;</button>
+        </div>
+
+        <div class="settings-form">
+          <div class="input-group">
+            <label>Focus (menit)</label>
+            <input type="number" id="input-focus" value="25" min="1" max="60" />
+          </div>
+
+          <div class="input-group">
+            <label>Short Break</label>
+            <input type="number" id="input-short" value="5" min="1" max="30" />
+          </div>
+
+          <div class="input-group">
+            <label>Long Break</label>
+            <input type="number" id="input-long" value="15" min="1" max="60" />
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button id="btn-save-settings" class="btn-modal btn-primary">
+            Simpan Pengaturan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- about section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Master Your Time</h2>
+          <p class="section-subtitle">
+            Teknik Pomodoro adalah metode manajemen waktu yang dikembangkan oleh
+            Francesco Cirillo pada akhir 1980-an. Teknik ini menggunakan timer
+            untuk membagi pekerjaan menjadi interval fokus dan istirahat.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="card-icon icon-violet">
+              <i class="bx bx-task"></i>
+            </div>
+            <h3>1. Pick a Task</h3>
+            <p>
+              Pilih satu per satu tugas yang ingin diselesaikan dan Singkirkan
+              gangguan.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon icon-cyan">
+              <i class="bx bxs-timer"></i>
+            </div>
+            <h3>2. Focus (25m)</h3>
+            <p>
+              Kerjakan tugas selama 25 menit tanpa jeda. Jika terganggu, catat
+              dan segera kembali.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon icon-pink">
+              <i class="bx bx-coffee"></i>
+            </div>
+            <h3>3. Short Break (5m)</h3>
+            <p>
+              Setelah timer berbunyi, istirahatlah sebentar. Regangkan badan
+              atau minum air.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon icon-gradient">
+              <i class="bx bx-refresh"></i>
+            </div>
+            <h3>4. Repeat & Long Break</h3>
+            <p>
+              Ulangi siklus ini 4 kali, lalu ambil istirahat panjang (15-30
+              menit) untuk memulihkan otak.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="main-footer">
+      <p>&copy; 2026 PomoLearn. Built with Focus.</p>
+    </footer>
+  </body>
 </html>
